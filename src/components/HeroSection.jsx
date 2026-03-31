@@ -1,7 +1,8 @@
 // ── Assets ──────────────────────────────────────────────────
 import phoneImg        from '../assets/Images/iPhone 13 Pro - Double Top.png'
-import arrowIcon       from '../assets/Icons/boxicons_skip-next-filled.svg'
+import playstoreIcon   from '../assets/Icons/ri_google-play-fill.svg'
 import logoInline      from '../assets/Icons/Group 2 2.svg'
+import HeroWave        from './HeroWave'
 
 /**
  * HeroSection (Section 1 — Beranda)
@@ -10,6 +11,7 @@ import logoInline      from '../assets/Icons/Group 2 2.svg'
 const HeroSection = () => {
   return (
     <section id="beranda" className="hero">
+      <HeroWave />
       <div className="hero__inner">
 
         {/* Left — Phone mockup */}
@@ -19,6 +21,7 @@ const HeroSection = () => {
             alt="Tampilan aplikasi BudJet di iPhone"
             className="hero__image"
           />
+          <div className="hero__image-shadow"></div>
         </div>
 
         {/* Right — Copy + CTA */}
@@ -34,12 +37,14 @@ const HeroSection = () => {
           </p>
 
           <a
-            href="#tentang"
+            href="https://play.google.com/store/apps"
+            target="_blank"
+            rel="noopener noreferrer"
             className="hero__cta"
             id="hero-try-now-btn"
           >
-            Try Now
-            <img src={arrowIcon} alt="" aria-hidden="true" />
+            <img src={playstoreIcon} alt="Google Play Store" aria-hidden="true" />
+            Coba Sekarang
           </a>
         </div>
 

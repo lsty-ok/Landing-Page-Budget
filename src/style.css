@@ -163,6 +163,8 @@ img {
   min-height: calc(100vh - 80px);
   display: flex;
   align-items: center;
+  position: relative;
+  overflow: hidden;
 }
 
 .hero__inner {
@@ -173,24 +175,57 @@ img {
   gap: var(--space-lg);
   align-items: center;
   width: 100%;
+  position: relative;
+  z-index: 10;
 }
 
 .hero__image-wrapper {
   display: flex;
   justify-content: center;
+  position: relative;
 }
 
 .hero__image {
   width: 100%;
   max-width: 420px;
   object-fit: contain;
-  filter: drop-shadow(0 20px 60px rgba(0,0,0,0.15));
-  animation: heroFloat 4s ease-in-out infinite;
+  /* Kurangi sedikit drop-shadow bawaan karena kita punya bayangan lantai nyata */
+  filter: drop-shadow(0 15px 45px rgba(0,0,0,0.1));
+  animation: heroFloat 3.5s ease-in-out infinite;
+  position: relative;
+  z-index: 2;
 }
 
+/* Bayangan Lantai */
+.hero__image-shadow {
+  position: absolute;
+  bottom: -15px;
+  left: 50%;
+  width: 250px;
+  height: 24px;
+  background: radial-gradient(ellipse at center, rgba(17, 24, 39, 0.45) 0%, rgba(17, 24, 39, 0) 70%);
+  border-radius: 50%;
+  animation: shadowFloat 3.5s ease-in-out infinite;
+  z-index: 1;
+}
+
+/* Animasi HP naik turun */
 @keyframes heroFloat {
   0%, 100% { transform: translateY(0);    }
-  50%       { transform: translateY(-14px); }
+  50%      { transform: translateY(-24px); } /* Naik lebih tinggi untuk menekankan jarak */
+}
+
+/* Animasi bayangan */
+@keyframes shadowFloat {
+  0%, 100% {
+    transform: translateX(-50%) scale(1);
+    opacity: 0.8;
+  }
+  50% {
+    /* Saat HP naik (-24px), bayangan mengecil dan memudar */
+    transform: translateX(-50%) scale(0.65);
+    opacity: 0.2;
+  }
 }
 
 .hero__content {

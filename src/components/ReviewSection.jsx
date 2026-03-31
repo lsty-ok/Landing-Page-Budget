@@ -6,25 +6,25 @@ import userIcon   from '../assets/Icons/ei_user.svg'
 const TESTIMONIALS = [
   {
     id: 'review-1',
-    name: 'Amar Ganteng',
+    name: 'Om Amar',
     role: 'Mahasiswa, PENS',
     quote: 'Bagus banget jadi bisa beli Rumah gara-gara ini',
   },
   {
     id: 'review-2',
-    name: 'Dina Cahyani',
-    role: 'Mahasiswa, ITS',
+    name: 'Abah Farki',
+    role: 'Mahasiswa, UNSOED',
     quote: 'Pengeluaran jadi lebih terkontrol tiap bulannya',
   },
   {
     id: 'review-3',
-    name: 'Rizky Pratama',
+    name: 'Resty Eonni',
     role: 'Mahasiswa, PENS',
     quote: 'Aplikasinya simpel tapi powerful banget buat budgeting',
   },
   {
     id: 'review-4',
-    name: 'Sari Dewi',
+    name: 'Koko Abdul',
     role: 'Mahasiswa, UNAIR',
     quote: 'Sekarang nggak perlu takut lagi kehabisan uang di akhir bulan',
   },
