@@ -5,6 +5,8 @@ import HeroSection     from './components/HeroSection'
 import AboutSection    from './components/AboutSection'
 import FeaturesSection from './components/FeaturesSection'
 import ReviewSection   from './components/ReviewSection'
+import Footer          from './components/Footer'
+import Reveal          from './components/Reveal'
 
 /**
  * App — Root component
@@ -21,10 +23,11 @@ function App() {
       <Navbar />
       <main>
         <HeroSection />
-        <AboutSection />
-        <FeaturesSection />
-        <ReviewSection />
+        <Reveal><AboutSection /></Reveal>
+        <Reveal><FeaturesSection /></Reveal>
+        <Reveal><ReviewSection /></Reveal>
       </main>
+      <Footer />
     </>
   )
 }
