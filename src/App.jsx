@@ -1,41 +1,31 @@
-import React, { useRef, useState } from 'react'
-import { Canvas, useFrame } from '@react-three/fiber'
-import { OrbitControls, Stars } from '@react-three/drei'
+import './style.css'
 
-function Box(props) {
-  const meshRef = useRef()
-  const [hovered, setHover] = useState(false)
-  const [active, setActive] = useState(false)
+import Navbar          from './components/Navbar'
+import HeroSection     from './components/HeroSection'
+import AboutSection    from './components/AboutSection'
+import FeaturesSection from './components/FeaturesSection'
+import ReviewSection   from './components/ReviewSection'
 
-  // Rotate mesh every frame, this is a hook provided by @react-three/fiber
-  useFrame((state, delta) => (meshRef.current.rotation.x += delta))
-
-  return (
-    <mesh
-      {...props}
-      ref={meshRef}
-      scale={active ? 1.5 : 1}
-      onClick={(event) => setActive(!active)}
-      onPointerOver={(event) => setHover(true)}
-      onPointerOut={(event) => setHover(false)}>
-      <boxGeometry args={[1, 1, 1]} />
-      <meshStandardMaterial color={hovered ? 'hotpink' : 'orange'} />
-    </mesh>
-  )
-}
-
+/**
+ * App — Root component
+ *
+ * Page structure (4 sections):
+ *   1. HeroSection    — #beranda  (white bg)
+ *   2. AboutSection   — #tentang  (white bg, card with shadow)
+ *   3. FeaturesSection — #fitur   (dark bg)
+ *   4. ReviewSection  — #ulasan   (lime bg)
+ */
 function App() {
   return (
-    <div style={{ width: '100vw', height: '100vh', background: '#111' }}>
-      <Canvas camera={{ position: [0, 0, 5] }}>
-        <ambientLight intensity={0.5} />
-        <pointLight position={[10, 10, 10]} />
-        <Box position={[-1.2, 0, 0]} />
-        <Box position={[1.2, 0, 0]} />
-        <OrbitControls />
-        <Stars />
-      </Canvas>
-    </div>
+    <>
+      <Navbar />
+      <main>
+        <HeroSection />
+        <AboutSection />
+        <FeaturesSection />
+        <ReviewSection />
+      </main>
+    </>
   )
 }
 
