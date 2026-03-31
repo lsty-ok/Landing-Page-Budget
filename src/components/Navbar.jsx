@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 
 // ── Assets ──────────────────────────────────────────────────
 import logoSvg from '../assets/Icons/Group 2 2-1.svg'
@@ -9,6 +9,7 @@ import logoSvg from '../assets/Icons/Group 2 2-1.svg'
  */
 const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(false)
+  const [activeLink, setActiveLink] = useState('#beranda')
 
   const links = [
     { label: 'Beranda', href: '#beranda' },
@@ -17,11 +18,43 @@ const Navbar = () => {
     { label: 'Ulasan',   href: '#ulasan'   },
   ]
 
+  // Update active state based on scroll position (Scrollspy)
+  useEffect(() => {
+    const handleScroll = () => {
+      // Posisi scroll + sedikit offset untuk deteksi
+      const scrollPosition = window.scrollY + 200
+
+      for (const { href } of links) {
+        const sectionId = href.substring(1)
+        const el = document.getElementById(sectionId)
+        if (el) {
+          const top = el.offsetTop
+          const height = el.offsetHeight
+
+          if (scrollPosition >= top && scrollPosition < top + height) {
+            setActiveLink(href)
+            break
+          }
+        }
+      }
+    }
+
+    window.addEventListener('scroll', handleScroll)
+    handleScroll() // trigger sekali di awal
+
+    return () => window.removeEventListener('scroll', handleScroll)
+  }, [])
+
+
   return (
     <nav className="navbar" aria-label="Navigasi utama">
       <div className="navbar__inner">
         {/* Logo */}
-        <a href="#beranda" aria-label="BudJet — kembali ke atas">
+        <a 
+          href="#beranda" 
+          aria-label="BudJet — kembali ke atas"
+          onClick={() => setActiveLink('#beranda')}
+        >
           <img
             src={logoSvg}
             alt="BudJet logo"
@@ -38,7 +71,11 @@ const Navbar = () => {
             <li key={href}>
               <a
                 href={href}
-                onClick={() => setMenuOpen(false)}
+                className={activeLink === href ? 'active' : ''}
+                onClick={() => {
+                  setActiveLink(href)
+                  setMenuOpen(false)
+                }}
               >
                 {label}
               </a>

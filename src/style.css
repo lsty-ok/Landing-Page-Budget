@@ -110,6 +110,25 @@ img {
   color: var(--color-white);
   text-decoration: none;
   transition: color var(--transition);
+  position: relative;
+  padding-bottom: 4px;
+}
+
+.navbar__links a::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 3px;
+  background-color: var(--color-lime);
+  border-radius: var(--radius-pill);
+  transition: width 0.3s ease;
+}
+
+.navbar__links a:hover::after,
+.navbar__links a.active::after {
+  width: 100%;
 }
 
 .navbar__links a:hover {
