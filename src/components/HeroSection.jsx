@@ -37,7 +37,7 @@ const HeroSection = () => {
           </p>
 
           <a
-            href="https://play.google.com/store/apps"
+            href="https://play.google.com/store/apps/details?id=com.budjet.app"
             target="_blank"
             rel="noopener noreferrer"
             className="hero__cta"

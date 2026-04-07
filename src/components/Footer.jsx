@@ -39,7 +39,7 @@ const Footer = () => {
       <div className="footer__bottom container">
         <p>&copy; {new Date().getFullYear()} Tim PDBL BudJet. All Rights Reserved.</p>
         <div className="footer__bottom-links">
-          <a href="https://play.google.com/store/apps" target="_blank" rel="noopener noreferrer">Unduh di Play Store</a>
+          <a href="https://play.google.com/store/apps/details?id=com.budjet.app" target="_blank" rel="noopener noreferrer">Unduh di Play Store</a>
         </div>
       </div>
     </footer>
