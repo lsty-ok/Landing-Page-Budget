@@ -82,18 +82,27 @@ const ReviewSection = () => {
           </p>
         </div>
 
-        {/* Right — Staggered card grid */}
+        {/* Right — Staggered card grid with Animation Tracks */}
         <div className="reviews__grid">
-          <div className="review-col">
-            {leftCol.map((t) => (
-              <ReviewCard key={t.id} {...t} />
-            ))}
+          
+          {/* Track 1: Kiri (Turun) */}
+          <div className="review-track">
+            <div className="review-col review-col--down">
+              {[...leftCol, ...leftCol, ...leftCol, ...leftCol].map((t, idx) => (
+                <ReviewCard key={`left-${t.id}-${idx}`} {...t} />
+              ))}
+            </div>
           </div>
-          <div className="review-col">
-            {rightCol.map((t) => (
-              <ReviewCard key={t.id} {...t} />
-            ))}
+
+          {/* Track 2: Kanan (Naik) */}
+          <div className="review-track">
+            <div className="review-col review-col--up">
+              {[...rightCol, ...rightCol, ...rightCol, ...rightCol].map((t, idx) => (
+                <ReviewCard key={`right-${t.id}-${idx}`} {...t} />
+              ))}
+            </div>
           </div>
+
         </div>
 
       </div>

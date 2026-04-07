@@ -485,17 +485,45 @@ img {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 16px;
+  height: 480px;
+  overflow: hidden;
+  position: relative;
 }
 
-/* Offset the second column down */
-.reviews__grid .review-col:nth-child(2) {
-  margin-top: 56px;
+.review-track {
+  height: 100%;
+  overflow: hidden;
+  position: relative;
 }
 
 .review-col {
   display: flex;
   flex-direction: column;
   gap: 16px;
+  width: 100%;
+}
+
+.review-col--down {
+  animation: scrollDown 22s linear infinite;
+}
+
+.review-col--up {
+  animation: scrollUp 22s linear infinite;
+}
+
+/* Hanya kolom yang di-hover yang berhenti! */
+.review-col:hover {
+  animation-play-state: paused;
+}
+
+@keyframes scrollDown {
+  0%   { transform: translateY(-50%); }
+  100% { transform: translateY(0%); }
+}
+
+@keyframes scrollUp {
+  0%   { transform: translateY(0%); }
+  100% { transform: translateY(-50%); }
 }
 
 .review-card {
@@ -702,7 +730,44 @@ img {
 
   .reviews__grid {
     grid-template-columns: 1fr;
+    height: 380px;
+    gap: 24px;
   }
+
+  .review-track {
+    height: auto;
+    width: 100%;
+  }
+
+  .review-col {
+    flex-direction: row;
+    width: max-content;
+    gap: 16px;
+  }
+
+  .review-card {
+    width: 280px; /* Lebar tetap agar proporsional ke samping */
+    flex-shrink: 0;
+  }
+
+  /* Ubah animasi menjadi horizontal */
+  .review-col--down {
+    animation: scrollLeft 20s linear infinite;
+  }
+
+  .review-col--up {
+    animation: scrollRight 20s linear infinite;
+  }
+}
+
+@keyframes scrollLeft {
+  0%   { transform: translateX(0%); }
+  100% { transform: translateX(-50%); }
+}
+
+@keyframes scrollRight {
+  0%   { transform: translateX(-50%); }
+  100% { transform: translateX(0%); }
 }
 
 /* ============================================================
